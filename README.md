@@ -1,6 +1,6 @@
 # AtomQuest Goal Setting & Tracking Portal
 
-A polished hackathon demo for the AtomQuest 1.0 problem statement. The app covers goal creation, L1 approval, quarterly achievement tracking, HR governance, audit logs, mock notifications, analytics, and CSV/XLSX reporting.
+My AtomQuest 1.0 submission for the goal-setting and tracking problem statement. It covers goal creation, L1 approval, quarterly achievement tracking, HR governance, audit logs, notifications, analytics, and CSV/XLSX reporting.
 
 ## Submission Deliverables
 
@@ -11,8 +11,7 @@ A polished hackathon demo for the AtomQuest 1.0 problem statement. The app cover
 | Architecture diagram | [`docs/architecture.png`](docs/architecture.png), [`docs/architecture.svg`](docs/architecture.svg) |
 | Login credentials / role journeys | Available below and on the login screen |
 
-See [`docs/submission.md`](docs/submission.md) for the submission checklist.
-For single-document submission, use [`docs/AtomQuest_Submission_Document.docx`](docs/AtomQuest_Submission_Document.docx).
+For the single-document submission, use [`docs/AtomQuest_Final_Submission.docx`](docs/AtomQuest_Final_Submission.docx).
 
 ## Demo Credentials
 
@@ -29,11 +28,11 @@ The login page includes one-click role account buttons for quickly switching bet
 ## Stack
 
 - Next.js 14 App Router, TypeScript, Tailwind CSS, shadcn/ui, lucide-react
-- NextAuth v5 Credentials provider for seeded demo auth
+- NextAuth v5 Credentials provider for the sample role accounts
 - React Hook Form + Zod for goal-sheet validation
 - TanStack Table, Recharts, ExcelJS
-- tRPC router boundaries and Prisma schema for production-ready wiring
-- Demo-safe local repository adapters, with `.env.example` placeholders for Neon, Upstash, Resend, Entra ID, and Teams
+- tRPC router boundaries and a Prisma schema for a database-backed version
+- Local demo data adapters, with `.env.example` entries for Neon, Upstash, Resend, Entra ID, and Teams
 
 ## Run Locally
 

@@ -11,7 +11,7 @@
 
 ## Single Document Submission
 
-Submit `docs/AtomQuest_Submission_Document.docx` as the single required document. It contains the working link, source code repository link, and architecture diagram inline.
+Submit `docs/AtomQuest_Final_Submission.docx` as the single required document. It includes the working link, source code repository link, and architecture diagram in one file.
 
 ## Demo Credentials
 
@@ -38,8 +38,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Publish Checklist
+## Submitted Links
 
-1. Create a remote repository and push this project.
-2. Deploy the pushed project to Vercel, Netlify, Render, or another Next.js host.
-3. Replace the pending URL rows above with the final links.
+- Live portal: https://atomquest-eight.vercel.app
+- Source code: https://github.com/GarvitPro/atomquest-hackathon-submit

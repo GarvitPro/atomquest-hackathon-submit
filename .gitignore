@@ -19,6 +19,7 @@
 # misc
 .DS_Store
 *.pem
+docs/AtomQuest_Submission_Document.docx
 
 # debug
 npm-debug.log*

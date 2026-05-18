@@ -82,7 +82,7 @@
   <text class="label" x="1105" y="650">Production Wiring</text>
   <text class="small" x="1105" y="685">Prisma schema</text>
   <text class="small" x="1105" y="713">Neon / Upstash / Resend</text>
-  <text class="small" x="1105" y="741">Teams / Entra placeholders</text>
+  <text class="small" x="1105" y="741">Teams / Entra integration points</text>
 
   <path class="arrow" d="M320 235 C360 235 365 235 405 235" />
   <path class="arrow" d="M660 290 C680 290 690 290 710 290" />
@@ -95,5 +95,5 @@
   <path class="arrow dashed" d="M930 432 C1030 500 1130 540 1200 610" />
 
   <text class="tiny" x="70" y="835">Demo credentials: employee@atomquest.demo, manager@atomquest.demo, admin@atomquest.demo / password demo123</text>
-  <text class="tiny" x="70" y="860">Generated for hackathon submission. Live URL and repository URL should be added after deployment and push.</text>
+  <text class="tiny" x="70" y="860">Project links: https://atomquest-eight.vercel.app and https://github.com/GarvitPro/atomquest-hackathon-submit</text>
 </svg>
