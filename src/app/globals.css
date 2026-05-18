@@ -1,27 +1,57 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: #f7f9fb;
+    --foreground: #15202b;
+    --card: #ffffff;
+    --card-foreground: #172033;
+    --popover: #ffffff;
+    --popover-foreground: #172033;
+    --primary: #14532d;
+    --primary-foreground: #f8fafc;
+    --secondary: #e8f2ed;
+    --secondary-foreground: #173526;
+    --muted: #edf2f7;
+    --muted-foreground: #617085;
+    --accent: #0f766e;
+    --accent-foreground: #ecfeff;
+    --destructive: #b42318;
+    --destructive-foreground: #fff7ed;
+    --border: #d7dee8;
+    --input: #cbd5e1;
+    --ring: #0f766e;
+    --success: #15803d;
+    --warning: #b7791f;
+    --info: #2563eb;
+    --radius: 0.5rem;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .surface-grid {
+    background-image:
+      linear-gradient(rgba(15, 118, 110, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 118, 110, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 }

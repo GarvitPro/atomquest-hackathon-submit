@@ -1,0 +1,135 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  EMPLOYEE
+  MANAGER
+  ADMIN
+}
+
+enum SheetStatus {
+  DRAFT
+  SUBMITTED
+  RETURNED
+  APPROVED
+}
+
+enum UoMType {
+  MIN
+  MAX
+  TIMELINE
+  ZERO
+}
+
+enum GoalStatus {
+  NOT_STARTED
+  ON_TRACK
+  COMPLETED
+}
+
+enum Quarter {
+  Q1
+  Q2
+  Q3
+  Q4
+}
+
+model User {
+  id              String      @id @default(cuid())
+  name            String
+  email           String      @unique
+  role            Role
+  title           String
+  department      String
+  managerId       String?
+  manager         User?       @relation("OrgHierarchy", fields: [managerId], references: [id])
+  reports         User[]      @relation("OrgHierarchy")
+  goalSheets      GoalSheet[]
+  checkInsManaged CheckIn[]   @relation("ManagerCheckIns")
+  auditLogs       AuditLog[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model GoalSheet {
+  id              String      @id @default(cuid())
+  employeeId      String
+  employee        User        @relation(fields: [employeeId], references: [id])
+  cycle           String
+  status          SheetStatus @default(DRAFT)
+  locked          Boolean     @default(false)
+  goals           Goal[]
+  submittedAt     DateTime?
+  approvedAt      DateTime?
+  returnedAt      DateTime?
+  returnedComment String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model Goal {
+  id             String     @id @default(cuid())
+  sheetId        String
+  sheet          GoalSheet  @relation(fields: [sheetId], references: [id])
+  title          String
+  description    String
+  thrustArea     String
+  uomType        UoMType
+  target         Float
+  actual         Float      @default(0)
+  weightage      Float
+  status         GoalStatus @default(NOT_STARTED)
+  primaryOwnerId String?
+  sharedGroupId  String?
+  managerNote    String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model CheckIn {
+  id              String   @id @default(cuid())
+  employeeId      String
+  managerId       String
+  manager         User     @relation("ManagerCheckIns", fields: [managerId], references: [id])
+  quarter         Quarter
+  comment         String
+  averageProgress Float
+  createdAt       DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String
+  actor     User     @relation(fields: [actorId], references: [id])
+  action    String
+  entity    String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model NotificationEvent {
+  id          String   @id @default(cuid())
+  channel     String
+  recipientId String
+  title       String
+  message     String
+  status      String
+  createdAt   DateTime @default(now())
+}
+
+model EscalationRule {
+  id             String   @id @default(cuid())
+  name           String
+  trigger        String
+  firstNudgeDays Int
+  escalationPath String[]
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

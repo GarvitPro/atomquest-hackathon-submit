@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AtomQuest Goal Setting & Tracking Portal
 
-## Getting Started
+A polished hackathon demo for the AtomQuest 1.0 problem statement. The app covers goal creation, L1 approval, quarterly achievement tracking, HR governance, audit logs, mock notifications, analytics, and CSV/XLSX reporting.
 
-First, run the development server:
+## Submission Deliverables
+
+| Requirement | Status |
+| --- | --- |
+| Live / hosted demo URL | https://atomquest-eight.vercel.app |
+| Source code repository | Pending remote publish |
+| Architecture diagram | [`docs/architecture.png`](docs/architecture.png), [`docs/architecture.svg`](docs/architecture.svg) |
+| Login credentials / role journeys | Available below and on the login screen |
+
+See [`docs/submission.md`](docs/submission.md) for the submission checklist.
+
+## Demo Credentials
+
+All demo users use the password `demo123`.
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Employee | `employee@atomquest.demo` | `demo123` |
+| Manager | `manager@atomquest.demo` | `demo123` |
+| Admin / HR | `admin@atomquest.demo` | `demo123` |
+
+The login page includes one-click role account buttons for quickly switching between the Employee, Manager, and Admin demo journeys.
+
+## Stack
+
+- Next.js 14 App Router, TypeScript, Tailwind CSS, shadcn/ui, lucide-react
+- NextAuth v5 Credentials provider for seeded demo auth
+- React Hook Form + Zod for goal-sheet validation
+- TanStack Table, Recharts, ExcelJS
+- tRPC router boundaries and Prisma schema for production-ready wiring
+- Demo-safe local repository adapters, with `.env.example` placeholders for Neon, Upstash, Resend, Entra ID, and Teams
+
+## Run Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verification
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```

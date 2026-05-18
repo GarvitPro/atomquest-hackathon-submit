@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">AtomQuest Portal Architecture</title>
+  <desc id="desc">Architecture diagram for the AtomQuest goal setting and tracking portal.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f9fb; }
+      .panel { fill: #ffffff; stroke: #d7dee8; stroke-width: 2; }
+      .group { fill: #eef7f3; stroke: #b7d7ca; stroke-width: 2; }
+      .external { fill: #eff6ff; stroke: #bfdbfe; stroke-width: 2; }
+      .store { fill: #fff7ed; stroke: #fed7aa; stroke-width: 2; }
+      .title { fill: #15202b; font: 700 32px Arial, sans-serif; }
+      .subtitle { fill: #617085; font: 400 18px Arial, sans-serif; }
+      .label { fill: #172033; font: 700 18px Arial, sans-serif; }
+      .small { fill: #475569; font: 400 14px Arial, sans-serif; }
+      .tiny { fill: #617085; font: 400 12px Arial, sans-serif; }
+      .arrow { stroke: #0f766e; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke-dasharray: 8 7; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L12,4 L0,8 Z" fill="#0f766e" />
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1400" height="900" />
+  <text class="title" x="70" y="72">AtomQuest Goal Setting &amp; Tracking Portal</text>
+  <text class="subtitle" x="70" y="105">Next.js demo architecture for Employee, Manager, and Admin / HR journeys</text>
+
+  <rect class="panel" x="70" y="155" width="250" height="160" rx="10" />
+  <text class="label" x="100" y="195">Demo Users</text>
+  <text class="small" x="100" y="230">Employee journey</text>
+  <text class="small" x="100" y="258">Manager approval journey</text>
+  <text class="small" x="100" y="286">Admin / HR governance</text>
+
+  <rect class="group" x="405" y="135" width="565" height="385" rx="14" />
+  <text class="label" x="435" y="175">Next.js 14 App Router</text>
+  <text class="tiny" x="435" y="198">TypeScript, React, Tailwind CSS, shadcn/ui, lucide-react</text>
+
+  <rect class="panel" x="440" y="230" width="220" height="120" rx="10" />
+  <text class="label" x="470" y="266">Portal Pages</text>
+  <text class="small" x="470" y="297">Dashboard</text>
+  <text class="small" x="470" y="323">Goals, check-ins, reports</text>
+
+  <rect class="panel" x="710" y="230" width="220" height="120" rx="10" />
+  <text class="label" x="740" y="266">Auth Boundary</text>
+  <text class="small" x="740" y="297">NextAuth v5</text>
+  <text class="small" x="740" y="323">Credentials provider</text>
+
+  <rect class="panel" x="440" y="380" width="220" height="105" rx="10" />
+  <text class="label" x="470" y="416">UI State</text>
+  <text class="small" x="470" y="447">DemoStoreProvider</text>
+  <text class="small" x="470" y="472">Local persistence</text>
+
+  <rect class="panel" x="710" y="380" width="220" height="105" rx="10" />
+  <text class="label" x="740" y="416">API Surface</text>
+  <text class="small" x="740" y="447">tRPC router</text>
+  <text class="small" x="740" y="472">Server boundaries</text>
+
+  <rect class="store" x="1055" y="155" width="270" height="160" rx="10" />
+  <text class="label" x="1085" y="195">Seeded Demo Data</text>
+  <text class="small" x="1085" y="230">Users and roles</text>
+  <text class="small" x="1085" y="258">Goal sheets and check-ins</text>
+  <text class="small" x="1085" y="286">Audit logs and notifications</text>
+
+  <rect class="store" x="1055" y="375" width="270" height="145" rx="10" />
+  <text class="label" x="1085" y="415">Browser Storage</text>
+  <text class="small" x="1085" y="450">localStorage demo state</text>
+  <text class="small" x="1085" y="478">Resettable during demos</text>
+
+  <rect class="external" x="405" y="610" width="250" height="150" rx="10" />
+  <text class="label" x="435" y="650">Reporting</text>
+  <text class="small" x="435" y="685">TanStack Table</text>
+  <text class="small" x="435" y="713">CSV export</text>
+  <text class="small" x="435" y="741">ExcelJS XLSX export</text>
+
+  <rect class="external" x="735" y="610" width="250" height="150" rx="10" />
+  <text class="label" x="765" y="650">Analytics</text>
+  <text class="small" x="765" y="685">Recharts dashboards</text>
+  <text class="small" x="765" y="713">Cycle completion</text>
+  <text class="small" x="765" y="741">Weighted progress</text>
+
+  <rect class="external" x="1075" y="610" width="250" height="150" rx="10" />
+  <text class="label" x="1105" y="650">Production Wiring</text>
+  <text class="small" x="1105" y="685">Prisma schema</text>
+  <text class="small" x="1105" y="713">Neon / Upstash / Resend</text>
+  <text class="small" x="1105" y="741">Teams / Entra placeholders</text>
+
+  <path class="arrow" d="M320 235 C360 235 365 235 405 235" />
+  <path class="arrow" d="M660 290 C680 290 690 290 710 290" />
+  <path class="arrow" d="M930 290 C990 290 1000 245 1055 245" />
+  <path class="arrow" d="M550 350 L550 380" />
+  <path class="arrow" d="M820 350 L820 380" />
+  <path class="arrow" d="M660 432 C820 545 1000 450 1055 450" />
+  <path class="arrow dashed" d="M550 485 C535 540 530 570 530 610" />
+  <path class="arrow dashed" d="M820 485 C840 545 855 570 860 610" />
+  <path class="arrow dashed" d="M930 432 C1030 500 1130 540 1200 610" />
+
+  <text class="tiny" x="70" y="835">Demo credentials: employee@atomquest.demo, manager@atomquest.demo, admin@atomquest.demo / password demo123</text>
+  <text class="tiny" x="70" y="860">Generated for hackathon submission. Live URL and repository URL should be added after deployment and push.</text>
+</svg>

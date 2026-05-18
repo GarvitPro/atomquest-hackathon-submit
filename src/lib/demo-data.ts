@@ -1,0 +1,358 @@
+import type {
+  CycleWindow,
+  DemoState,
+  EscalationRule,
+  Goal,
+  GoalSheet,
+  NotificationEvent,
+  User,
+} from "@/lib/types";
+
+const now = "2026-05-18T09:00:00.000Z";
+
+export const demoUsers: User[] = [
+  {
+    id: "emp-1",
+    name: "Aarav Mehta",
+    email: "employee@atomquest.demo",
+    password: "demo123",
+    role: "EMPLOYEE",
+    title: "Sales Executive",
+    department: "Enterprise Growth",
+    managerId: "mgr-1",
+    avatarInitials: "AM",
+  },
+  {
+    id: "emp-2",
+    name: "Priya Nair",
+    email: "priya.nair@atomquest.demo",
+    password: "demo123",
+    role: "EMPLOYEE",
+    title: "Operations Lead",
+    department: "Fulfilment",
+    managerId: "mgr-1",
+    avatarInitials: "PN",
+  },
+  {
+    id: "emp-3",
+    name: "Kabir Sethi",
+    email: "kabir.sethi@atomquest.demo",
+    password: "demo123",
+    role: "EMPLOYEE",
+    title: "Customer Success Associate",
+    department: "Customer Success",
+    managerId: "mgr-1",
+    avatarInitials: "KS",
+  },
+  {
+    id: "mgr-1",
+    name: "Meera Rao",
+    email: "manager@atomquest.demo",
+    password: "demo123",
+    role: "MANAGER",
+    title: "L1 Manager",
+    department: "Commercial Excellence",
+    avatarInitials: "MR",
+  },
+  {
+    id: "admin-1",
+    name: "Rohan Iyer",
+    email: "admin@atomquest.demo",
+    password: "demo123",
+    role: "ADMIN",
+    title: "HR Systems Admin",
+    department: "People Operations",
+    avatarInitials: "RI",
+  },
+];
+
+const goal = (
+  id: string,
+  ownerId: string,
+  title: string,
+  description: string,
+  thrustArea: string,
+  uomType: Goal["uomType"],
+  target: number,
+  actual: number,
+  weightage: number,
+  status: Goal["status"],
+): Goal => ({
+  id,
+  ownerId,
+  title,
+  description,
+  thrustArea,
+  uomType,
+  target,
+  actual,
+  weightage,
+  status,
+  updatedAt: now,
+});
+
+export const initialGoalSheets: GoalSheet[] = [
+  {
+    id: "sheet-emp-1",
+    employeeId: "emp-1",
+    cycle: "FY 2026-27",
+    status: "DRAFT",
+    locked: false,
+    updatedAt: now,
+    goals: [
+      goal(
+        "goal-1",
+        "emp-1",
+        "Grow enterprise pipeline",
+        "Build a qualified opportunity pipeline through focused outreach and partner referrals.",
+        "Revenue Growth",
+        "MIN",
+        120,
+        42,
+        40,
+        "ON_TRACK",
+      ),
+      goal(
+        "goal-2",
+        "emp-1",
+        "Improve proposal turnaround",
+        "Reduce average proposal preparation time without compromising quality of solution notes.",
+        "Operational Excellence",
+        "MAX",
+        3,
+        4,
+        30,
+        "ON_TRACK",
+      ),
+      goal(
+        "goal-3",
+        "emp-1",
+        "Complete product certification",
+        "Finish the internal platform certification before the first quarterly review.",
+        "Capability Building",
+        "TIMELINE",
+        30,
+        24,
+        30,
+        "COMPLETED",
+      ),
+    ],
+  },
+  {
+    id: "sheet-emp-2",
+    employeeId: "emp-2",
+    cycle: "FY 2026-27",
+    status: "SUBMITTED",
+    locked: false,
+    submittedAt: "2026-05-12T11:30:00.000Z",
+    updatedAt: "2026-05-12T11:30:00.000Z",
+    goals: [
+      goal(
+        "goal-4",
+        "emp-2",
+        "Reduce order rework",
+        "Bring avoidable fulfilment rework down by tightening handoff checks.",
+        "Quality",
+        "MAX",
+        4,
+        5,
+        35,
+        "ON_TRACK",
+      ),
+      goal(
+        "goal-5",
+        "emp-2",
+        "Raise dispatch reliability",
+        "Keep weekly dispatch completion healthy during demand spikes.",
+        "Service Reliability",
+        "MIN",
+        96,
+        91,
+        35,
+        "ON_TRACK",
+      ),
+      goal(
+        "goal-6",
+        "emp-2",
+        "Zero priority safety incidents",
+        "Maintain incident-free priority lanes through weekly safety observations.",
+        "Safety",
+        "ZERO",
+        0,
+        0,
+        30,
+        "COMPLETED",
+      ),
+    ],
+  },
+  {
+    id: "sheet-emp-3",
+    employeeId: "emp-3",
+    cycle: "FY 2026-27",
+    status: "APPROVED",
+    locked: true,
+    submittedAt: "2026-05-09T10:15:00.000Z",
+    approvedAt: "2026-05-10T14:20:00.000Z",
+    updatedAt: "2026-05-10T14:20:00.000Z",
+    goals: [
+      goal(
+        "goal-7",
+        "emp-3",
+        "Improve onboarding response quality",
+        "Lift new customer response quality through structured first-week playbooks.",
+        "Customer Experience",
+        "MIN",
+        92,
+        88,
+        45,
+        "ON_TRACK",
+      ),
+      goal(
+        "goal-8",
+        "emp-3",
+        "Reduce ageing support cases",
+        "Bring ageing case count down through tighter daily triage.",
+        "Customer Experience",
+        "MAX",
+        12,
+        15,
+        35,
+        "ON_TRACK",
+      ),
+      goal(
+        "goal-9",
+        "emp-3",
+        "Publish knowledge base refresh",
+        "Complete the top 20 article refresh before Q2 check-in.",
+        "Knowledge Systems",
+        "TIMELINE",
+        60,
+        52,
+        20,
+        "COMPLETED",
+      ),
+    ],
+  },
+];
+
+export const cycleWindows: CycleWindow[] = [
+  {
+    period: "Phase 1 - Goal Setting",
+    opens: "1 May",
+    action: "Goal creation, submission and approval",
+    status: "OPEN",
+  },
+  {
+    period: "Q1 Check-in",
+    opens: "July",
+    action: "Progress update - planned vs actual",
+    status: "UPCOMING",
+  },
+  {
+    period: "Q2 Check-in",
+    opens: "October",
+    action: "Progress update - planned vs actual",
+    status: "UPCOMING",
+  },
+  {
+    period: "Q3 Check-in",
+    opens: "January",
+    action: "Progress update - planned vs actual",
+    status: "UPCOMING",
+  },
+  {
+    period: "Q4 / Annual",
+    opens: "March / April",
+    action: "Final achievement capture",
+    status: "UPCOMING",
+  },
+];
+
+export const escalationRules: EscalationRule[] = [
+  {
+    id: "rule-1",
+    name: "Goal sheet not submitted",
+    trigger: "Employee misses goal submission after cycle opens",
+    firstNudgeDays: 3,
+    escalationPath: ["Employee", "Manager", "HR"],
+    active: true,
+  },
+  {
+    id: "rule-2",
+    name: "Approval waiting too long",
+    trigger: "Manager has not approved a submitted sheet",
+    firstNudgeDays: 2,
+    escalationPath: ["Manager", "Skip-level", "HR"],
+    active: true,
+  },
+  {
+    id: "rule-3",
+    name: "Quarterly check-in pending",
+    trigger: "Check-in remains incomplete inside an active window",
+    firstNudgeDays: 4,
+    escalationPath: ["Employee", "Manager", "HR"],
+    active: true,
+  },
+];
+
+export const initialNotifications: NotificationEvent[] = [
+  {
+    id: "note-1",
+    channel: "EMAIL",
+    recipientId: "mgr-1",
+    title: "Priya submitted goals",
+    message: "Goal sheet is waiting in your approval queue.",
+    status: "MOCKED",
+    createdAt: "2026-05-12T11:31:00.000Z",
+  },
+  {
+    id: "note-2",
+    channel: "TEAMS",
+    recipientId: "emp-3",
+    title: "Goals approved",
+    message: "Kabir's FY 2026-27 goal sheet is locked for tracking.",
+    status: "MOCKED",
+    createdAt: "2026-05-10T14:21:00.000Z",
+  },
+];
+
+export function createDemoState(): DemoState {
+  return {
+    users: demoUsers,
+    goalSheets: initialGoalSheets,
+    checkIns: [
+      {
+        id: "check-1",
+        employeeId: "emp-3",
+        managerId: "mgr-1",
+        quarter: "Q1",
+        comment:
+          "Strong start. Keep case ageing visible in the weekly review so the lagging cases do not drift.",
+        averageProgress: 92,
+        createdAt: "2026-05-17T15:00:00.000Z",
+      },
+    ],
+    auditLogs: [
+      {
+        id: "audit-1",
+        actorId: "mgr-1",
+        actorName: "Meera Rao",
+        action: "SHEET_APPROVED",
+        entity: "sheet-emp-3",
+        message: "Approved Kabir Sethi's FY 2026-27 goal sheet.",
+        createdAt: "2026-05-10T14:20:00.000Z",
+      },
+    ],
+    notifications: initialNotifications,
+    escalationRules,
+    cycleWindows,
+  };
+}
+
+export function verifyDemoUser(email: string, password: string) {
+  return demoUsers.find(
+    (user) =>
+      user.email.toLowerCase() === email.toLowerCase() &&
+      user.password === password,
+  );
+}
