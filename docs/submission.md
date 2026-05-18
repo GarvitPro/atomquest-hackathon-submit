@@ -5,9 +5,13 @@
 | Requirement | Status | Value |
 | --- | --- | --- |
 | Live / hosted demo URL | Ready | https://atomquest-eight.vercel.app |
-| Source code repository | Pending remote publish | Add the GitHub / GitLab / Bitbucket URL here after push |
+| Source code repository | Ready | https://github.com/GarvitPro/atomquest-hackathon-submit |
 | Architecture diagram | Ready | `docs/architecture.png` and `docs/architecture.svg` |
 | Login credentials | Ready | See below |
+
+## Single Document Submission
+
+Submit `docs/AtomQuest_Submission_Document.docx` as the single required document. It contains the working link, source code repository link, and architecture diagram inline.
 
 ## Demo Credentials
 

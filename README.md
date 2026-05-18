@@ -7,11 +7,12 @@ A polished hackathon demo for the AtomQuest 1.0 problem statement. The app cover
 | Requirement | Status |
 | --- | --- |
 | Live / hosted demo URL | https://atomquest-eight.vercel.app |
-| Source code repository | Pending remote publish |
+| Source code repository | https://github.com/GarvitPro/atomquest-hackathon-submit |
 | Architecture diagram | [`docs/architecture.png`](docs/architecture.png), [`docs/architecture.svg`](docs/architecture.svg) |
 | Login credentials / role journeys | Available below and on the login screen |
 
 See [`docs/submission.md`](docs/submission.md) for the submission checklist.
+For single-document submission, use [`docs/AtomQuest_Submission_Document.docx`](docs/AtomQuest_Submission_Document.docx).
 
 ## Demo Credentials
 
